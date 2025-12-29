@@ -3,151 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7173 STUDIOS | Official Site</title>
+    <title>7173 STUDIOS | LagSpike Rants</title>
     <style>
-        /* CSS Styling */
+        /* Modern Dark Theme Design Tokens */
         :root {
             --primary-yellow: #ffcc00;
             --bg-dark: #121212;
+            --card-bg: #1e1e1e;
             --text-white: #ffffff;
-            --accent-green: #4caf50;
+            --text-gray: #b0b0b0;
+            --transition-speed: 0.8s;
+        }
+
+        /* Smooth Entry Animations */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-white);
             margin: 0;
             padding: 0;
-            text-align: center;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Banner Styling - Keeps it from looking ugly */
+        /* Banner with Bottom Gradient Fade */
         .banner-container {
+            position: relative;
             width: 100%;
-            height: 300px;
-            overflow: hidden;
-            background-color: #222;
+            height: 400px;
+            background-color: #000;
+            animation: fadeIn 1.5s ease-in;
         }
 
         .banner-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Resizes to fill area without stretching */
-        }
-
-        /* Logo and Profile Section */
-        .profile-section {
-            margin-top: -75px; /* Pulls pfp up over the banner slightly */
-            padding-bottom: 20px;
-        }
-
-        .pfp {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--bg-dark);
             object-fit: cover;
-            background-color: var(--primary-yellow);
-        }
-
-        .studio-logo {
-            max-width: 200px;
-            height: auto;
             display: block;
-            margin: 20px auto;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin: 10px 0;
+        /* Gradient mask to blend banner into page content */
+        .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
+        }
+
+        /* Main Content Container */
+        .main-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp var(--transition-speed) ease-out forwards;
+        }
+
+        /* Studio Logo Styling */
+        .studio-logo {
+            max-width: 250px;
+            height: auto;
+            margin: -50px auto 30px auto; /* Pulls logo up into the gradient area */
+            display: block;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+        }
+
+        /* About Section Card */
+        .about-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .about-card h2 {
             color: var(--primary-yellow);
+            margin-top: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .subtitle {
-            font-style: italic;
-            color: #aaa;
+        .about-card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 0;
         }
 
-        /* Links Section */
-        .links-container {
+        /* Profile Picture Section (Moved above buttons) */
+        .pfp-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .pfp-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-yellow);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .pfp-image:hover {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        /* Navigation Buttons */
+        .button-group {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 15px;
-            margin-top: 30px;
-            padding: 20px;
+            align-items: center;
         }
 
-        .btn {
-            width: 80%;
-            max-width: 400px;
-            padding: 15px;
+        .action-btn {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+            border-radius: 15px;
             text-decoration: none;
-            color: black;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: transform 0.2s, background-color 0.2s;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* TikTok Branding */
+        .btn-tiktok {
+            background-color: #ffffff;
+            color: #000000;
+            border-bottom: 4px solid #ff0050;
+        }
+
+        /* Roblox Branding */
+        .btn-roblox {
             background-color: var(--primary-yellow);
+            color: #121212;
+            border-bottom: 4px solid #cca300;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #ffd633;
+        .action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+            filter: brightness(1.05);
         }
 
-        .tiktok-btn {
-            background-color: #000;
-            color: #fff;
-            border: 2px solid #ff0050;
+        .action-btn:active {
+            transform: translateY(-2px);
         }
 
+        /* Footer */
         footer {
-            margin-top: 50px;
-            padding: 20px;
-            font-size: 0.8rem;
+            margin-top: 80px;
+            padding-bottom: 40px;
+            font-size: 0.85rem;
             color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .banner-container { height: 250px; }
+            .studio-logo { max-width: 180px; }
+            .main-content { padding-top: 0; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Banner Section with your file banner.jpeg -->
     <div class="banner-container">
-        <img src="banner.jpeg" alt="7173 Studios Banner">
+        <img src="banner.jpeg" alt="7173 STUDIOS Banner">
+        <div class="banner-overlay"></div>
     </div>
 
-    <div class="profile-section">
-        <img src="pfp.jpeg" alt="LagSpike Profile Picture" class="pfp">
-        <img src="logo.png" alt="7173 Studios Logo" class="studio-logo">
-        <h1>7173 STUDIOS</h1>
-        <p class="subtitle">Home of LagSpike | Roblox Rants & Trolls</p>
-    </div>
+    <div class="main-content">
+        <!-- Studio Logo from your file logo.png -->
+        <img src="logo.png" alt="7173 STUDIOS Logo" class="studio-logo">
 
-    <div class="links-container">
-        <a href="https://tiktok.com/lagspikerants" class="btn tiktok-btn" target="_blank">Follow on TikTok</a>
-        <a href="#" class="btn" id="robloxBtn">Join My Roblox Group</a>
-        <a href="#" class="btn" style="background-color: #ff0000; color: white;">Subscribe on YouTube</a>
-    </div>
+        <!-- About 7173 Studios Section -->
+        <div class="about-card">
+            <h2>About 7173 Studios</h2>
+            <p>7173 studios is a studio that makes social media videos, our first channel is LagSpike Rants which is on TikTok and is very successful.</p>
+        </div>
 
-    <footer>
-        &copy; 2025 7173 STUDIOS. Operated by LagSpike.
-    </footer>
+        <!-- Profile Picture Section (pfp.jpeg) moved above buttons -->
+        <div class="pfp-wrapper">
+            <img src="pfp.jpeg" alt="LagSpike Profile Picture" class="pfp-image">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="https://tiktok.com/lagspikerants" class="action-btn btn-tiktok" target="_blank">
+                Visit LagSpike Rants on TikTok
+            </a>
+            
+            <a href="https://www.roblox.com/communities/174729687/LagSpike-rants#!/about" class="action-btn btn-roblox" target="_blank">
+                Join LagSpike Rants Roblox Group
+            </a>
+        </div>
+
+        <footer>
+            &copy; 2025 7173 STUDIOS &bull; OWNED AND OPERATED BY LAGSPIKE
+        </footer>
+    </div>
 
     <script>
-        // JavaScript for basic interactivity
-        document.addEventListener('DOMContentLoaded', () => {
-            const robloxBtn = document.getElementById('robloxBtn');
-
-            robloxBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert("Redirecting to 7173 STUDIOS Roblox Group...");
-                // Replace the '#' in the link above with your actual Roblox group link!
-                window.open('https://www.roblox.com/communities/174729687/LagSpike-rants#!/about', '_blank');
+        // Log initialization
+        window.onload = () => {
+            console.log("7173 STUDIOS Portal Initialized");
+            
+            // Interaction feedback
+            const buttons = document.querySelectorAll('.action-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.style.transform = 'scale(0.98)';
+                    setTimeout(() => { btn.style.transform = ''; }, 100);
+                });
             });
-
-            console.log("7173 STUDIOS site loaded successfully.");
-        });
+        };
     </script>
-
 </body>
 </html>
+
