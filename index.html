@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7173 STUDIOS | LagSpike Rants</title>
+    <title>7173 STUDIOS | Official Portal</title>
     <style>
         /* Modern Dark Theme Design Tokens */
         :root {
             --primary-yellow: #ffcc00;
+            --brick-red: #ff4d4d;
             --bg-dark: #121212;
             --card-bg: #1e1e1e;
             --text-white: #ffffff;
@@ -15,7 +16,7 @@
             --transition-speed: 0.8s;
         }
 
-        /* Smooth Entry Animations */
+        /* Entry Animations */
         @keyframes fadeInUp {
             from { 
                 opacity: 0; 
@@ -25,11 +26,6 @@
                 opacity: 1; 
                 transform: translateY(0); 
             }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         body {
@@ -42,13 +38,12 @@
             line-height: 1.6;
         }
 
-        /* Banner with Bottom Gradient Fade */
+        /* Banner */
         .banner-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 350px;
             background-color: #000;
-            animation: fadeIn 1.5s ease-in;
         }
 
         .banner-container img {
@@ -56,21 +51,21 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            opacity: 0.6;
         }
 
-        /* Gradient mask to blend banner into page content */
         .banner-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 150px;
             background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
         }
 
         /* Main Content Container */
         .main-content {
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px 60px 20px;
             position: relative;
@@ -79,93 +74,105 @@
             animation: fadeInUp var(--transition-speed) ease-out forwards;
         }
 
-        /* Studio Logo Styling */
         .studio-logo {
-            max-width: 250px;
+            max-width: 220px;
             height: auto;
-            margin: -50px auto 30px auto; /* Pulls logo up into the gradient area */
+            margin: -60px auto 30px auto;
             display: block;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
         }
 
-        /* About Section Card */
-        .about-card {
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-section {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px;
             border-radius: 20px;
-            margin-bottom: 40px;
-            text-align: left;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .project-section:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 204, 0, 0.3);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .about-card h2 {
+        .pfp-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border: 4px solid var(--primary-yellow);
+            background-color: #333;
+        }
+
+        /* Specific border for BrickPulse */
+        .pfp-brickpulse {
+            border-color: var(--brick-red);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
+        }
+
+        h2 {
             color: var(--primary-yellow);
-            margin-top: 0;
-            font-size: 1.5rem;
+            margin: 10px 0;
+            font-size: 1.4rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .about-card p {
+        .brick-text {
+            color: var(--brick-red);
+        }
+
+        .description {
             color: var(--text-gray);
-            font-size: 1.1rem;
-            margin-bottom: 0;
-        }
-
-        /* Profile Picture Section (Moved above buttons) */
-        .pfp-wrapper {
+            font-size: 0.95rem;
             margin-bottom: 25px;
+            min-height: 60px;
         }
 
-        .pfp-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid var(--primary-yellow);
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .pfp-image:hover {
-            transform: scale(1.1) rotate(3deg);
-        }
-
-        /* Navigation Buttons */
+        /* Action Buttons */
         .button-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            align-items: center;
+            gap: 12px;
+            width: 100%;
         }
 
         .action-btn {
             width: 100%;
-            max-width: 450px;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 16px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
             border: none;
+            cursor: pointer;
         }
 
-        /* TikTok Branding */
         .btn-tiktok {
             background-color: #ffffff;
             color: #000000;
             border-bottom: 4px solid #ff0050;
         }
 
-        /* Roblox Branding */
         .btn-roblox {
             background-color: var(--primary-yellow);
             color: #121212;
@@ -173,86 +180,81 @@
         }
 
         .action-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
-            filter: brightness(1.05);
-        }
-
-        .action-btn:active {
-            transform: translateY(-2px);
+            filter: brightness(1.1);
+            transform: scale(1.02);
         }
 
         /* Footer */
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             padding-bottom: 40px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #555;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* Responsive adjustments */
-        @media (max-width: 600px) {
-            .banner-container { height: 250px; }
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .banner-container { height: 200px; }
             .studio-logo { max-width: 180px; }
-            .main-content { padding-top: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Banner Section with your file banner.jpeg -->
     <div class="banner-container">
         <img src="banner.jpeg" alt="7173 STUDIOS Banner">
         <div class="banner-overlay"></div>
     </div>
 
     <div class="main-content">
-        <!-- Studio Logo from your file logo.png -->
         <img src="logo.png" alt="7173 STUDIOS Logo" class="studio-logo">
 
-        <!-- About 7173 Studios Section -->
-        <div class="about-card">
-            <h2>About 7173 Studios</h2>
-            <p>7173 studios is a studio that makes social media videos, our first channel is LagSpike Rants which is on TikTok and is very successful.</p>
-        </div>
+        <p style="color: var(--text-gray); margin-bottom: 40px; font-weight: 500;">
+            The official hub for 7173 Studios' experimental media projects.
+        </p>
 
-        <!-- Profile Picture Section (pfp.jpeg) moved above buttons -->
-        <div class="pfp-wrapper">
-            <img src="pfp.jpeg" alt="LagSpike Profile Picture" class="pfp-image">
-        </div>
+        <div class="projects-grid">
+            <!-- Project 1: LagSpike Rants -->
+            <div class="project-section">
+                <img src="pfp.jpeg" alt="LagSpike Rants PFP" class="pfp-image">
+                <h2>LagSpike Rants</h2>
+                <p class="description">Experimental Roblox rants and community storytelling. Our first major success.</p>
+                
+                <div class="button-group">
+                    <a href="https://tiktok.com/@lagspikerants" class="action-btn btn-tiktok" target="_blank">
+                        Watch on TikTok
+                    </a>
+                    <a href="https://www.roblox.com/communities/174729687/LagSpike-rants#!/about" class="action-btn btn-roblox" target="_blank">
+                        Roblox Group
+                    </a>
+                </div>
+            </div>
 
-        <!-- Action Buttons -->
-        <div class="button-group">
-            <a href="https://tiktok.com/@lagspikerants" class="action-btn btn-tiktok" target="_blank">
-                Visit LagSpike Rants on TikTok
-            </a>
-            
-            <a href="https://www.roblox.com/communities/174729687/LagSpike-rants#!/about" class="action-btn btn-roblox" target="_blank">
-                Join LagSpike Rants Roblox Group
-            </a>
+            <!-- Project 2: BrickPulse -->
+            <div class="project-section">
+                <img src="pfp2.jpeg" alt="BrickPulse PFP" class="pfp-image pfp-brickpulse">
+                <h2 class="brick-text">BrickPulse</h2>
+                <p class="description">The next phase: Cinematic LEGO animations and experimental brickfilm projects.</p>
+                
+                <div class="button-group">
+                    <a href="https://tiktok.com/@brickpulse2" class="action-btn btn-tiktok" target="_blank">
+                        Watch on TikTok
+                    </a>
+                    <span class="action-btn" style="background: #2a2a2a; color: #666; cursor: default; border-bottom: 4px solid #1a1a1a;">
+                        More Coming Soon
+                    </span>
+                </div>
+            </div>
         </div>
 
         <footer>
-            &copy; 2025 7173 STUDIOS &bull; OWNED AND OPERATED BY LAGSPIKE
+            &copy; 2025 7173 STUDIOS &bull; EXPERIMENT SUCCESSFUL
         </footer>
     </div>
 
-    <script>
-        // Log initialization
-        window.onload = () => {
-            console.log("7173 STUDIOS Portal Initialized");
-            
-            // Interaction feedback
-            const buttons = document.querySelectorAll('.action-btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btn.style.transform = 'scale(0.98)';
-                    setTimeout(() => { btn.style.transform = ''; }, 100);
-                });
-            });
-        };
-    </script>
 </body>
 </html>
 
